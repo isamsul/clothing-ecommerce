@@ -1,11 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import HomePage from './pages/homepage/homepage.component';
+import HomePage from "./pages/homepage/homepage.component";
+import { Route, Routes } from "react-router-dom";
+
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
     <div>
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element="Page Not Found" />
+      </Routes>
     </div>
   );
 }
