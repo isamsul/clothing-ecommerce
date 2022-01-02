@@ -1,3 +1,5 @@
+import React from "react";
+
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import { Route, Routes, Navigate } from "react-router-dom";
@@ -16,10 +18,7 @@ import { selectCurrentUser } from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import CollectionPage from "./pages/collection/collection.component";
 
-import logo from "./logo.svg";
 import "./App.css";
-import React from "react";
-
 class App extends React.Component {
   unsubscribeFromAuth = null;
   componentDidMount() {
