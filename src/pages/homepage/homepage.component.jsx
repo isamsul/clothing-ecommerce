@@ -1,16 +1,16 @@
 import React from "react";
-import './homepage.styles.scss';
 
 import Directory from "../../components/directory/directory.component";
-import { useLocation, useNavigate, useParams, useResolvedPath } from "react-router-dom";
+
+import { HomePageContainer } from "./homepage.styles";
 
 const HomePage = (props) => {
   // useNavigate('home')
   return (
-    <div className="homepage">
+    <HomePageContainer>
       <Directory />
-    </div>
-    
+    </HomePageContainer>
+
   )
 }
 

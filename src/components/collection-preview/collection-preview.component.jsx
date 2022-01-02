@@ -1,11 +1,9 @@
-import react from "react";
+// import react from "react";
 import CollectionItem from "../collection-item/collection-item.component";
-import { useNavigate } from "react-router-dom";
 
 import './collection-preview.styles.scss';
 
 const CollectionPreview = ({ title, items }) => {
-  const navigate = useNavigate();
   return (
     <div className="collection-preview">
       <h1>{title.toUpperCase()}</h1>
