@@ -14,6 +14,7 @@ import {
 } from "./firebase/firebase.utils";
 import { selectCurrentUser } from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/checkout.component";
+import CollectionPage from "./pages/collection/collection.component";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -48,6 +49,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
+            <Route index path="shop/:collectionId" element={<CollectionPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route
             path="/signin"
