@@ -16,8 +16,6 @@ import {
 } from "./firebase/firebase.utils";
 import { selectCurrentUser } from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/checkout.component";
-import CollectionPage from "./pages/collection/collection.component";
-import { selectCollectionsForPreview } from "./redux/shop/shop.selector";
 
 import "./App.css";
 class App extends React.Component {
