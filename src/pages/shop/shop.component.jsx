@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import WithSpinner from "../../components/with-spinner/with-spinner.component";
-import { Outlet, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
 import { collection, firestore, onSnapshot, convertCollectionsSnapShotToMap } from "../../firebase/firebase.utils";
