@@ -1,4 +1,4 @@
-// import react from "react";
+// import react from "react";e
 import CollectionItem from "../collection-item/collection-item.component";
 
 import './collection-preview.styles.scss';

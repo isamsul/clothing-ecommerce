@@ -1,10 +1,10 @@
 import React from "react";
+import { createStructuredSelector } from "reselect";
+import { connect } from "react-redux";
+import { Route, Routes, Navigate, Outlet } from "react-router-dom";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
-import { Route, Routes, Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 
 import { setCurrentUser } from "./redux/user/user.actions";
 import Header from "./components/header/header.component";
@@ -17,6 +17,7 @@ import {
 import { selectCurrentUser } from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import CollectionPage from "./pages/collection/collection.component";
+import { selectCollectionsForPreview } from "./redux/shop/shop.selector";
 
 import "./App.css";
 class App extends React.Component {
@@ -47,8 +48,9 @@ class App extends React.Component {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
-            <Route index path="shop/:collectionId" element={<CollectionPage />} />
+          <Route path="/shop/*" element={<ShopPage />} />
+            {/* <Route index path=":collectionId" element={<CollectionPage />} /> */}
+          {/* </Route> */}
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route
             path="/signin"
