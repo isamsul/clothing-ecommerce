@@ -15,6 +15,7 @@ import {
   setDoc,
   collection,
   writeBatch,
+  getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -29,8 +30,8 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const firestore = getFirestore(firebase);
 const auth = getAuth();
-const provider = new GoogleAuthProvider();
-const signInWithGoogle = () => signInWithPopup(auth, provider);
+const googleProvider = new GoogleAuthProvider();
+const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
 
 const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -55,6 +56,15 @@ const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
 export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
   const collectionRef = collection(firestore, collectionKey);
   const batch = writeBatch(firestore);
@@ -76,17 +86,25 @@ export const convertCollectionsSnapShotToMap = (collections) => {
       items,
     };
   });
-  return transformedCollection.reduce((accumulator, collection) => (
-    {...accumulator, [collection.title.toLowerCase()]: collection}
-  ), {});
+  return transformedCollection.reduce(
+    (accumulator, collection) => ({
+      ...accumulator,
+      [collection.title.toLowerCase()]: collection,
+    }),
+    {}
+  );
 };
 
 export {
   firebase,
   auth,
   firestore,
+  googleProvider,
+  signInWithPopup,
   onSnapshot,
   doc,
+  getDoc,
+  getDocs,
   collection,
   signInWithGoogle,
   createUserProfileDocument,
